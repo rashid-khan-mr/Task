@@ -21,36 +21,22 @@ inline fun <ResultType> networkOnly(
     crossinline onFetchFailed: (Throwable) -> Unit
 ) = flow<Resource<List<DrugInfo>>> {
     emit(Resource.loading(null))
-    Log.v("calling", "inside network only")
 
     try {
         val response = fetch()
-        Log.v("calling", "response")
 
         if (response.isSuccessful) {
             response.body()?.let { responseBody ->
                 // Read the response body as a string
                 val jsonString = responseBody.string()
-                Log.v("RawResponse", "jsonString = $jsonString")
 
                 val jsonReader = JsonReader(StringReader(jsonString))
                 jsonReader.isLenient = true // Allow lenient parsing of malformed JSON
-
-                // Parse the entire response as a JSON element
                 val jsonElement = JsonParser.parseReader(jsonReader)
-
-                // Log the full JSON structure to ensure we're parsing the entire response
-                Log.v("RawResponse", "jsonelement =  "+jsonElement.toString())
                 val drugInfoList = mutableListOf<DrugInfo>()
-
-                // Check if the "problems" field is a JsonArray
                 if (jsonElement is JsonObject) {
                     val jsonObject = jsonElement.asJsonObject
-                    Log.v("Problems object ", "object : "+jsonObject.toString())
                     val problemsArray: JsonArray = jsonObject["problems"].asJsonArray
-
-                    // Log the problemsArray to see its contents
-                    Log.v("Problems Array", "array "+problemsArray.toString())
 
                     if (problemsArray != null) {
                         // Iterate through each problem entry (e.g., Diabetes, Asthma)
@@ -96,13 +82,6 @@ inline fun <ResultType> networkOnly(
                         Log.e("Error", "Problems array is missing or null.")
                     }
 
-
-                    Log.v("DrugInfoList", "size"+drugInfoList.size)
-                    drugInfoList.forEach {
-                        Log.v("DrugInfoList", "name ="+it.name)
-                        Log.v("DrugInfoList", "dose ="+it.dose)
-                        Log.v("DrugInfoList", "strength ="+it.strength)
-                    }
                 } else {
                     // Handle case where the root element is not a JsonObject
                     Log.e("Error", "Expected a JSON object but got a different structure")

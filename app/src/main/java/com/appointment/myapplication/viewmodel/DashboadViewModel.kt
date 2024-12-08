@@ -51,7 +51,7 @@ class DashboadViewModel @Inject constructor(
 
     suspend fun postDDSalesSummery(): Flow<Resource<List<DrugInfo>>> {
         Log.v("calling"," postDD")
-        return dashboardRepository.postDDSalesSummery1().transform {
+        return dashboardRepository.getDrugsInfo().transform {
             when (it.status) {
                 Status.LOADING -> {
                     Log.v("hahahaa loading","loading")

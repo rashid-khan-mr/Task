@@ -102,9 +102,6 @@ dependencies {
     implementation("com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.2")
 
-//Coil load Image
-    implementation("io.coil-kt:coil-compose:$coilVersion")
-    //Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion")
     //Materials
@@ -125,7 +122,6 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
     debugImplementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling-preview:$composeVersion")
-    //implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifeCycleAndLiveDataCompilerAndViewModelKTXVersion")
     implementation("androidx.activity:activity-compose:$activityVersion")
     implementation("androidx.navigation:navigation-compose:$composeNavigationVersion")
     implementation("androidx.hilt:hilt-navigation-compose:$composeHiltNavigationVersion")
@@ -149,7 +145,6 @@ dependencies {
 
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2") // Use the latest version
     androidTestImplementation ("androidx.arch.core:core-testing:2.1.0")
-
 
 }
 

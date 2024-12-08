@@ -7,18 +7,11 @@ import com.appointment.myapplication.data.remote.ApiService
 import com.appointment.myapplication.data.remote.Resource
 import com.appointment.myapplication.data.remote.Status
 import com.appointment.myapplication.data.remote.networkOnly
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
-import com.google.gson.reflect.TypeToken
 import javax.inject.Inject
-import com.google.gson.stream.JsonReader
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.transform
-import java.io.StringReader
 
 class DashboardRepository @Inject constructor(
     private val roomDAO: RoomDAO,
@@ -26,8 +19,7 @@ class DashboardRepository @Inject constructor(
 ) {
 
 
-    suspend fun postDDSalesSummery1(): Flow<Resource<List<DrugInfo>>> {
-        Log.v("calling", "networking")
+    suspend fun getDrugsInfo(): Flow<Resource<List<DrugInfo>>> {
 
         return networkOnly<List<DrugInfo>>(
             fetch = { apiService.getMedi() },
@@ -37,12 +29,10 @@ class DashboardRepository @Inject constructor(
         ).transform { resource ->
             when (resource.status) {
                 Status.SUCCESS -> {
-                    Log.v("calling success ", "ohoo")
                     val drugInfoList = resource.data
                     emit(Resource.success(data = drugInfoList))
                 }
                 Status.ERROR -> {
-                    Log.e("calling", "Error: ${resource.message}")
                     emit(Resource.error(resource.message ?: "Unknown error", resource.statusCode, null))
                 }
                 Status.LOADING -> emit(Resource.loading(null))
