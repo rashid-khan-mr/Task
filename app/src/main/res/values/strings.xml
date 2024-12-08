@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">AndroidTask</string>
+
+    <string name="ok">OK</string>
+    <string name="main">Home</string>
+    <string name="accessibility_service_description">This service allows the app to open its screen when WhatsApp is launched.</string>
+
+    <string name="perms_notifications_rationale">It is required to inform you about the applock status and any important actions needed.\n\nYou can disable specific types of notifications in the settings.</string>
+    <string name="perms_usage_stats_rationale">Access to device\'s usage statistics is required to monitor when an app opens to show the lock screen if necessary.\n\nSelect Lockation and allow in the next window.</string>
+    <string name="perms_accessibility">Accessibility service is required to monitor when an app opens to show the lock screen if necessary.\n\nSelect this app and allow in the next window.</string>
+    <string name="perms_overlay_rationale">It is required to show the lock screen when you open a locked app.\n\nSelect Lockation and allow in the next window.</string>
+    <string name="perms_location_rationale">It is required to get information about your current Location and connected WiFi to un/lock apps.</string>
+    <string name="perms_background_location_rationale">It is required to be able to monitor Location and WiFi changes to un/lock the apps.\n\nMake sure to select \"Allow all the time\" in the settings.</string>
+
+
+    <string name="_string_login_as_home_user">Login as Home User</string>
+    <string name="_string_corporate_user">Corporate User</string>
+    <string name="_string_login_as_corporate_user">Login as Corporate User</string>
+    <string name="login_by_phone">Login</string>
+    <string name="login_by_phone_des">Enter your mobile number to receive one\ntime password</string>
+    <string name="login">Login</string>
+    <string name="invalid_mobile">Please enter a valid mobile number.</string>
+    <string name="login_error_msg_empty_email_mobile">Please enter your email or mobile number</string>
+    <string name="login_error_msg_empty_password">Please enter your password</string>
+    <string name="empty_string" />
+
+    <string name="sign_up">Sign up</string>
+    <string name="_string_create_account">Create Account</string>
+    <string name="_string_account_already_created">Account already created! Login</string>
+
+</resources>
